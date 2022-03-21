@@ -1,0 +1,42 @@
+﻿@model IEnumerable<FptBook.Models.category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Category</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.categoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            Management
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.categoryID }, new { @class = "fas fa-edit", @style = "color:seagreen" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.categoryID }, new { @class = "fas fa-trash", @style = "color:seagreen" })
+            </td>
+        </tr>
+    }
+
+</table>

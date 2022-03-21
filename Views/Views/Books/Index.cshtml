@@ -1,0 +1,78 @@
+﻿@model IEnumerable<FptBook.Models.book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.author.authorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category.categoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bookName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.image)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shortDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.detailDesc)
+        </th>
+        <th>
+            Management
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.author.authorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category.categoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.image)*@
+                <img src="~/assets/img/Mangas/@item.image" height="150px" width="100px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shortDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.detailDesc)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.bookID }, new { @class = "fas fa-edit", @style = "color:seagreen" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.bookID }, new { @class = "fas fa-file", @style = "color:seagreen" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.bookID }, new { @class = "fas fa-trash", @style = "color:seagreen" })
+            </td>
+        </tr>
+    }
+
+</table>

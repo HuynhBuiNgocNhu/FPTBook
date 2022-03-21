@@ -1,0 +1,37 @@
+﻿@model FptBook.Models.account
+@{
+    ViewBag.Title = "Login";
+}
+
+<section class="login-dark" style="background: rgb(108,252,175);">
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Login</h4>
+        <p class="text-danger">@ViewBag.ErrorMessage</p>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.username, new { @class = "col-md-2 control-label", @required = "" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.password, new { @class = "form-control", @required = "" })
+                @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: rgb(26,235,147);">Login</button><a class="forgot" href="@Url.Action("Register")">Register to login</a></div>
+        </div>
+    }
+</section>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

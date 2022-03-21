@@ -1,0 +1,58 @@
+﻿@model FptBook.Models.account
+@{
+    ViewBag.Title = "ChangePass";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ChangePass</h2>
+@if (ViewBag.Success != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Success");
+        window.location = '/';
+    };
+    </script>
+}
+
+<section class="login-dark" style="margin-top: 55px; background-size: 100%; background: rgb(86,198,164);">
+    <div class="form-container">
+
+        @using (Html.BeginForm("ChangePass", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @style = "background: rgb(21, 29, 59);" }))
+        {
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <h2 class="text-center" style="color:white">Change password</h2>
+
+
+            <div class="form-group">
+                @Html.PasswordFor(u => u.CurrentPassword, new { @class = "form-control form-control-lg", @placeholder = "Enter current password", @autofocus = "", @required = "" })
+                @if (ViewBag.Error != null)
+                {
+                    <p class="text-danger">@ViewBag.Error</p>
+                }
+            </div>
+
+
+            <div class="form-group">
+                @Html.PasswordFor(u => u.NewPassword, new { @class = "form-control form-control-lg", @placeholder = "Enter new password", @required = "" })
+                @Html.ValidationMessageFor(model => model.NewPassword, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.PasswordFor(u => u.ConfirmNewPassword, new { @class = "form-control form-control-lg", @placeholder = "Confirm new password", @required = "" })
+                @if (ViewBag.Confirm != null)
+                {
+                    <p class="text-danger">@ViewBag.Confirm</p>
+                }
+
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Update" style="width: 109.2375px;margin-right: 13px;" />
+            <a class="btn btn-primary" role="button" style="width: 109.2375px;background: rgb(251,0,52);" href="@Url.Action("Editinfor", "Account")">Cancel</a>
+
+        }
+    </div>
+</section>
