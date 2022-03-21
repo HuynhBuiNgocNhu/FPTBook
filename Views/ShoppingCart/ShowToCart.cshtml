@@ -43,7 +43,7 @@
                                                             double total = item._shopping_product.price * item._shopping_quantity;
                                                             <tr>
                                                                 <td><a href="@Url.Action("Delete", "ShoppingCart", new { id = item._shopping_product.bookID})" class="text-danger"><i class="ri-delete-bin-3-line"></i></a></td>
-                                                                <td><img src="~/assets/img/Mangas/@Url.Content(item._shopping_product.image)" class="img-fluid" width="35" alt="product"></td>
+                                                                <td><img src="~/assets/img/@Url.Content(item._shopping_product.image)" class="img-fluid" width="35" alt="product"></td>
                                                                 <td>@Html.DisplayFor(model => item._shopping_product.bookName)</td>
                                                                 <td>
                                                                     <div class="form-group mb-0">
