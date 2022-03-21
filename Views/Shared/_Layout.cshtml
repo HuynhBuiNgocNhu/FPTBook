@@ -71,7 +71,7 @@
                     //login and register
                     <span class="navbar-text actions">
                         <a @Html.ActionLink($"Hello, { Session["UserName"]}", "Editinfor", "Account")
-                        <a style="color:white;"  href="@Url.Action("Logout","Account")" class="btn btn-success">Logout</a>
+                        <a style="color:white;"href="@Url.Action("Logout","Account")" class="btn btn-success">Logout</a>
                     </span>
                 }
                 else
@@ -118,9 +118,9 @@
         <ul class="list-inline">
             <li class="list-inline-item"><a href="#">Home</a></li>
             <li class="list-inline-item"><a href="#">Services</a></li>
-            <li class="list-inline-item"><a href="#">About</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
             <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">About</a></li>
         </ul><!-- End: Links -->
         <!-- Start: Copyright -->
         <p class="copyright">FPTBook © 2022</p><!-- End: Copyright -->
