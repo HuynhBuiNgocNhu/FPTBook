@@ -1,0 +1,56 @@
+i {
+  color: #7e7d7d;
+}
+
+.h5, h5 {
+  margin-bottom: 0px;
+  padding-bottom: 36px;
+}
+
+.card {
+  word-wrap: normal;
+}
+
+.product-text-color {
+  color: #BB9AE3;
+}
+
+h1, h5 {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.small, small {
+  color: #9295A0;
+  font-size: 14px;
+}
+
+.row > div h5 {
+  font-size: 14px;
+  display: inline-block;
+  border: 1px solid blue;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 22px;
+}
+
+.product-price {
+  display: inline-block;
+  margin-left: 22px;
+  margin-bottom: 0px;
+}
+
+.start-icon {
+  margin-top: 17px;
+}
+
+.product-review {
+  line-height: 1px;
+}
+
+.product-description {
+  margin-top: 17px;
+  color: #6d6c6c;
+  font-size: 13PX;
+}
+

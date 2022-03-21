@@ -1,0 +1,112 @@
+@media (min-width: 768px) {
+  .jumbotron.float-left {
+    height: 738px;
+    width: 150px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 29px;
+  }
+}
+
+.fa.fa-star.d-flex.float-left.align-content-end {
+  <i class="fa fa-star d-flex float-left align-content-end" style="margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.h5, h5 {
+  margin-bottom: 0px;
+  padding-bottom: 36px;
+}
+
+.active {
+  background: #F5F5F5;
+  background-image: url("Active Rect Background.png");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  /*padding-left: 5px;*/
+  /*background-position: left center;*/
+}
+
+#icon {
+  padding-left: 5px;
+}
+
+.icon {
+  /*background-color: blue;*/
+  padding-left: 5px;
+}
+
+.sidemenu {
+  background-color: blue;
+  padding-left: 10px;
+}
+
+.text-center {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.img {
+  background-repeat: no-repeat;
+  height: 345px;
+  width: 442px;
+}
+
+.card {
+  word-wrap: normal;
+}
+
+.product-text-color {
+  color: #BB9AE3;
+}
+
+.btn-primary {
+  background-color: rgba(187,123,87,0.55);
+}
+
+h1, h5 {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.small, small {
+  color: #9295A0;
+  font-size: 14px;
+}
+
+.row > div h5 {
+  font-size: 14px;
+  display: inline-block;
+  border: 1px solid blue;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 22px;
+}
+
+.product-display {
+  display: inline-block;
+}
+
+.product-price {
+  display: inline-block;
+  margin-left: 22px;
+  margin-bottom: 0px;
+}
+
+.start-icon {
+  margin-top: 17px;
+}
+
+.product-review {
+  line-height: 1px;
+}
+
+.product-description {
+  margin-top: 17px;
+  color: #6d6c6c;
+  font-size: 13PX;
+}
+

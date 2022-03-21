@@ -1,0 +1,91 @@
+﻿@model FptBook.Models.book
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.author.authorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.author.authorName)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.category.categoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category.categoryName)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.bookName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookName)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+            <img src="~/assets/img/Mangas/@Model.image" height="140px" width="100px" />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.shortDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.shortDesc)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.detailDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.detailDesc)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+        </div>
+    }
+</div>

@@ -1,0 +1,135 @@
+﻿@model FptBook.Models.Cart
+@{
+    ViewBag.Title = "ShowToCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Cart</h2>
+@if (Model != null)
+{
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+    <div class="container">
+        <div class="contentbar">
+            <!-- Start row -->
+            <div class="row">
+                <!-- Start col -->
+                <div class="col-md-12 col-lg-12 col-xl-12">
+                    <div class="card m-b-30">
+                        <div class="card-header">
+                            <h5 class="card-title">Cart</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-10 col-xl-8">
+                                    <div class="cart-container">
+                                        <div class="cart-head">
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Action</th>
+                                                            <th scope="col">Photo</th>
+                                                            <th scope="col">Product</th>
+                                                            <th scope="col">Qty</th>
+                                                            <th scope="col">Price</th>
+                                                            <th scope="col" class="text-right">Amount</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in Model.Items)
+
+                                                        {
+                                                            double total = item._shopping_product.price * item._shopping_quantity;
+                                                            <tr>
+                                                                <td><a href="@Url.Action("Delete", "ShoppingCart", new { id = item._shopping_product.bookID})" class="text-danger"><i class="ri-delete-bin-3-line"></i></a></td>
+                                                                <td><img src="~/assets/img/Mangas/@Url.Content(item._shopping_product.image)" class="img-fluid" width="35" alt="product"></td>
+                                                                <td>@Html.DisplayFor(model => item._shopping_product.bookName)</td>
+                                                                <td>
+                                                                    <div class="form-group mb-0">
+                                                                        @using (Html.BeginForm("UpdateQuantity", "ShoppingCart"))
+                                                                        {
+                                                                            <div style="width: 100%">
+                                                                                <input type="hidden" value="@item._shopping_product.bookID" name="ID_Product" />
+                                                                                <input type="number" style="width: 90px;" value="@item._shopping_quantity" name="Quantity" min="1" max="1000" />
+                                                                            </div>
+
+                                                                            <div style="width: 100%;">
+                                                                                <input type="submit" class="btn btn-success" style="margin-top: 10px;" value="Update" />
+                                                                            </div>}
+                                                                    </div>
+                                                                </td>
+                                                                <td>@Html.DisplayFor(model => item._shopping_product.price)</td>
+                                                                <td class="text-right">@total</td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="cart-body">
+                                            <div class="row">
+                                                <div class="col-md-12 order-1 order-lg-2 col-lg-7 col-xl-6">
+                                                    <div class="order-total table-responsive ">
+                                                        <table class="table table-borderless text-right">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="f-w-7 font-18"><h4>Total :</h4></td>
+                                                                    <td class="f-w-7 font-18"><h4>@Model.TotalPrice()</h4></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cart-footer text-right">
+                                            <a href="@Url.Action("Index","Home")" class="btn btn-danger my-1">Back to Home<i class="rounded-left ml-2"></i></a>
+                                            @*<button type="button" class="btn btn-success my-1"><i class="start-icon"></i>Proceed to Checkout</button>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End col -->
+            </div>
+            <!-- End row -->
+        </div>
+    </div>
+
+
+    <section class="register-photo" style="margin-top: -35px; background-image:none;" id="Checkout">
+        <div class="form-container">
+            @using (Html.BeginForm("Checkout", "ShoppingCart", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @style = "background: rgb(21, 29, 59);" }))
+            {
+                <h2 class="text-center" style="color:white">Checkout information</h2>
+
+                <div class="col-12">
+                    <label class="form-label" style="color:white">Delivery address<span class="text-danger">(required)</span></label>
+                    <input type="text" class="form-control" name="Address" placeholder="Enter Delivery address" value="@Session["Address"]" required>
+                </div>
+                <div class="col-12">
+                    <label class="form-label" style="color:white">Phone Numbers<span class="text-danger">(required)</span></label>
+                    <input type="text" class="form-control" name="Phone" placeholder="Enter phone number" value="@Session["Phone"]" required>
+                </div>
+                <div class="col-12">
+                    <label for="form-label" class="form-label" style="color:white">User Name</label>
+                    <input type="text" class="form-control" name="Username" value="@Session["UserName"]" readonly>
+                </div>
+                <div class="col-12">
+                    <label class="form-label" style="color:white">Total Price</label>
+                    <input type="text" class="form-control" name="TotalPrice" value="@Model.TotalPrice()" readonly="">
+                </div>
+                <div class="cart-footer text-right">
+                    <a href="@Url.Action("Index","Home")" class="btn btn-danger my-1">Cancel<i class="rounded-left ml-2"></i></a>
+                    <button type="submit" class="btn btn-success my-1"><i class="start-icon"></i>Proceed to Checkout</button>
+                </div>
+            }
+        </div>
+    </section>
+
+
+
+}

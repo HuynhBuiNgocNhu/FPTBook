@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - FptBook</title>
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/Roboto.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900">
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="~/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="~/assets/css/Bootstrap-4---Product-List.css">
+    <link rel="stylesheet" href="~/assets/css/Bootstrap-Cards-v2.css">
+    <link rel="stylesheet" href="~/assets/css/Card-Store.css">
+    <link rel="stylesheet" href="~/assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="~/assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="~/assets/css/Header-Blue.css">
+    <link rel="stylesheet" href="~/assets/css/Highlight-Blue-1.css">
+    <link rel="stylesheet" href="~/assets/css/Highlight-Blue.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="~/assets/css/Manage-Users.css">
+    <link rel="stylesheet" href="~/assets/css/MUSA_carousel-product-cart-slider-1.css">
+    <link rel="stylesheet" href="~/assets/css/MUSA_carousel-product-cart-slider.css">
+    <link rel="stylesheet" href="~/assets/css/Navbar-Apple.css">
+    <link rel="stylesheet" href="~/assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="~/assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="~/assets/css/Product-Card-1.css">
+    <link rel="stylesheet" href="~/assets/css/Product-Card.css">
+    <link rel="stylesheet" href="~/assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="~/assets/css/Scroll-To-Top.css">
+    <link rel="stylesheet" href="~/assets/css/Search-Input-responsive.css">
+    <link rel="stylesheet" href="~/assets/css/Shopping-Grid.css">
+    <link rel="stylesheet" href="~/assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="~/assets/css/styles.css">
+    <link rel="stylesheet" href="~/assets/css/Swiper-Slider-Card-For-Blog-Or-Product-1.css">
+    <link rel="stylesheet" href="~/assets/css/Swiper-Slider-Card-For-Blog-Or-Product.css">
+</head>
+<body>
+    <!-- Start: Navigation with Button -->
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top navigation-clean-button" style="background: var(--bs-white);">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index","Home")">FPT Book store</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                @if (Session["UserName"] != null)
+                {
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="#" style="font-family: Roboto, sans-serif;font-weight: bold;">Bestseller</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" style="font-family: Roboto, sans-serif;font-weight: bold;">Trends</a></li>
+                        <li class="nav-item">
+
+                        <li class="nav-item">
+                            @using (Html.BeginForm("Search", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                            {
+                                <div class="input-group rounded">
+                                    @Html.TextBox("Search", "", new { placeholder = "Search...", @style = "border-radius:20px" })
+                                    <button type="submit" style="background-color: white; border: none; margin-left: -37px; height: 20px; margin-top: 3px "><i class="fas fa-search"></i></button>
+                                </div>
+                            }
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-default" href="@Url.Action("ShowToCart","ShoppingCart")" role="button" style="transform:translate(15px)">
+                                <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:19px"></i> Cart (@Html.Action("BagCart", "ShoppingCart"))
+                            </a>
+                        </li>
+                    </ul>
+                    //login and register
+                    <span class="navbar-text actions">
+                        <a @Html.ActionLink($"Hello, { Session["UserName"]}", "Editinfor", "Account")
+                        <a style="color:white;"  href="@Url.Action("Logout","Account")" class="btn btn-success">Logout</a>
+                    </span>
+                }
+                else
+                {
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="#" style="font-family: Roboto, sans-serif;font-weight: bold;">Bestseller</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" style="font-family: Roboto, sans-serif;font-weight: bold;">Trends</a></li>
+                        <li class="nav-item">
+                        <li class="nav-item">
+                            @using (Html.BeginForm("Search", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                            {
+                                <div class="input-group rounded">
+                                    @Html.TextBox("Search", "", new { placeholder = "  Search...", @style = "border-radius:20px" })
+                                    <button type="submit" style="background-color: white; border: none; margin-left: -37px; height: 20px; margin-top: 3px "><i class="fas fa-search"></i></button>
+                                </div>
+                            }
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="btn btn-default" href="@Url.Action("ShowToCart","ShoppingCart")" role="button" style="transform:translate(15px)">
+                                <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:19px"></i> Cart (@Html.Action("BagCart", "ShoppingCart"))
+                            </a>
+                        </li>
+
+                    </ul>
+                    <span class="navbar-text actions">
+                        <a @Html.ActionLink("Login", "Login", "Account")
+                        <a class="btn btn-light action-button" role="button" data-bss-hover-animate="tada" @Html.ActionLink("Register","Register","Account")
+                    </span>
+                }
+
+                <div class="d-flex align-items-center"><label class="form-label d-flex mb-0" for="search-field"></label></div>
+            </div>
+        </div>
+    </nav><!-- End: Navigation with Button -->
+
+    @RenderBody()
+
+    <!-- Start: Footer Basic -->
+    <footer class="footer-basic">
+        <!-- Start: Social Icons -->
+        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div><!-- End: Social Icons -->
+        <!-- Start: Links -->
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Home</a></li>
+            <li class="list-inline-item"><a href="#">Services</a></li>
+            <li class="list-inline-item"><a href="#">About</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+        </ul><!-- End: Links -->
+        <!-- Start: Copyright -->
+        <p class="copyright">FPTBook © 2022</p><!-- End: Copyright -->
+    </footer><!-- End: Footer Basic -->
+    <!-- Start: Scroll-To-Top --><a href="#top">
+        <div id="scroll-to-top"><i class="fa fa-chevron-up"></i></div>
+    </a><!-- End: Scroll-To-Top -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @*Js Bootstrap*@
+    <script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+    <script src="~/assets/js/Simple-Slider.js"></script>
+    <script src="~/assets/js/Swiper-Slider-Card-For-Blog-Or-Product.js"></script>
+    <script>
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿@model FptBook.Models.book
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.author.authorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.author.authorName)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.category.categoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category.categoryName)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.bookName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookName)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+            <img src="~/assets/img/Mangas/@Model.image" height="140px" width="100px" />
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.shortDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.shortDesc)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.detailDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.detailDesc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.bookID }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+</p>
