@@ -56,7 +56,6 @@ namespace FptBook.Controllers
             }
             Cart cart = Session["Cart"] as Cart;
             return View(cart);
-
         }
         public ActionResult Delete(string id)
         {
@@ -103,7 +102,6 @@ namespace FptBook.Controllers
                         pro.quantity -= orderDetail.quantity;
                         db.books.Attach(pro);
                         db.Entry(pro).Property(a => a.quantity).IsModified = true;
-
                         db.orderDetails.Add(orderDetail);
                     }
                     db.SaveChanges();
