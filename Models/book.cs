@@ -27,11 +27,11 @@ namespace FptBook.Models
         [StringLength(10)]
         public string authorID { get; set; }
 
-        [Required(ErrorMessage = "Price can not be empty")]
+        [Required(ErrorMessage = "Price can not be empty!")]
         [Range(0, 1000, ErrorMessage = "Please enter number less 1000")]
         public int quantity { get; set; }
 
-        [Required(ErrorMessage = "Price can not be empty")]
+        [Required(ErrorMessage = "Price can not be empty!")]
         [Range(0, 1000, ErrorMessage = "Please enter number less 1000")]
         public int price { get; set; }
 
