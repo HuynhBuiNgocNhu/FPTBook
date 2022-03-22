@@ -20,7 +20,7 @@ namespace FptBook.Models
 
         [Required]
         [StringLength(10)]
-        [RegularExpression(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}", ErrorMessage = "Invalid phone number")]
+        [RegularExpression(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}", ErrorMessage = "Invalid phone number!")]
         public string phone { get; set; }
 
         [Required]
