@@ -62,7 +62,7 @@ namespace FptBook.Controllers
                 if (check == null && image != null && image.ContentLength > 0)
                 {
                     string pic = Path.GetFileName(image.FileName);
-                    string path = Path.Combine(Server.MapPath("~/assets/img/Mangas"), pic);
+                    string path = Path.Combine(Server.MapPath("~/assets/img/"), pic);
                     string checkimg = Path.GetExtension(image.FileName);
                     if (checkimg.ToLower() == ".jpg" || checkimg.ToLower() == ".jpeg" || checkimg.ToLower() == ".png")
                     {
@@ -100,7 +100,7 @@ namespace FptBook.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
                 book Book = db.books.Find(id);
-                Session["imgPath"] = "~/assets/img/Mangas/" + Book.image;
+                Session["imgPath"] = "~/assets/img/" + Book.image;
                 if (Book == null)
                 {
                     return HttpNotFound();
@@ -122,7 +122,7 @@ namespace FptBook.Controllers
                 if (image != null && image.ContentLength > 0)
                 {
                     string pic = Path.GetFileName(image.FileName);
-                    string path = Path.Combine(Server.MapPath("~/assets/img/Mangas/"), pic);
+                    string path = Path.Combine(Server.MapPath("~/assets/img/"), pic);
                     string oldPath = Request.MapPath(Session["imgPath"].ToString());
                     string checkimg = Path.GetExtension(image.FileName);
                     if (checkimg.ToLower() == ".jpg" || checkimg.ToLower() == ".jpeg" || checkimg.ToLower() == ".png")
@@ -175,7 +175,7 @@ namespace FptBook.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
                 book Book = db.books.Find(id);
-                Session["imgOldPath"] = "~/assets/img/Mangas/" + Book.image;
+                Session["imgOldPath"] = "~/assets/img/" + Book.image;
                 if (Book == null)
                 {
                     return HttpNotFound();
